@@ -20,7 +20,7 @@
                 <h2>About you</h2>
                 <div class="form-group">
                     <label for="name">Name (required) </label>
-                    <input type="text" class="form-control" id="name" required placeholder="">
+                    <input type="text" class="form-control" id="name" required="true" placeholder="">
                 </div>
                 <div class="form-group">
                     <label for="photo">Link to photo image (required)</label>
@@ -32,7 +32,7 @@
     <div class="container">
         <h2>Question 1</h2>
         <p>Your mind is always buzzing with unexplored ideas and plans.</p>
-        <select name="q1" id="q1">
+        <select required name="q1" id="q1">
             <option value=""></option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -59,7 +59,6 @@
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
-        </select>
         <h2>Question 4</h2>
         <p>You rarely do something just out of sheer curiosity.</p>
         <select name="q4" id="q4">
@@ -81,15 +80,15 @@
             <option value="5">5</option>
         </select>
         <h2>Question 6</h2>
-         <p>It is often difficult for you to relate to other people’s feelings.</p>
-         <select name="q6" id="q6">
+        <p>It is often difficult for you to relate to other people’s feelings.</p>
+        <select name="q6" id="q6">
             <option value=""></option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
-        </select> 
+        </select>
         <h2>Question 7</h2>
         <p>In a discussion, truth should be more important than people’s sensitivities.</p>
         <select name="q7" id="q7">
@@ -112,7 +111,7 @@
         </select>
         <h2>Question 9</h2>
         <p>You think that everyone’s views should be respected regardless of whether they are supported by facts or not. </p>
-        <select name="q10" id="q10">
+        <select name="q9" id="q9">
             <option value=""></option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -132,37 +131,45 @@
         </select>
     </div>
     <br>
-<div class="container"><input class="btn btn-default btn-lg" type="submit" id="submit" value="Submit"></div>
-
-    </body>
-    <script>
-    var answers = []
-
-    $('#submit').on('click', function() {
-        var name = $('#name').text();
-        var userPhotoLink = $("#photo").text();
-        
-        console.log(userPhotoLink)
-        console.log("This is the name: "+ name)
-        
-        var q1 = $("#q1").val();
-        var  = $("#q2").val();
-        console.log(q)
-        console.log(a)
-        answers.push(q);
-        answers.push(a);
-        console.log(answers);
-    })
-    </script>
-
+    <div class="panel container">
+        <input class="btn btn-default btn-lg btn-block" type="submit" id="submit" value="Submit">
+        <br>
+    </div>
+    <div class="panel">
     <footer class="footer">
-        <div class="container">
-            <!-- <p><a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a> | <a href="https://github.com/afhaque/HotRestaurant">GitHub Repo</a></p> -->
+    <div class="container">
+        <!-- <p><a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a> | <a href="https://github.com/afhaque/HotRestaurant">GitHub Repo</a></p> -->
+        <p><a href="/api/tables">API Table Link</a> | <a href="#">API Friends List</a> | <a href="#">GitHub Repo</a></p>
+    </div>
+</footer>
+    </div>
+</body>
+<script>
+var answers = []
 
-            <p><a href="/api/tables">API Table Link</a> | <a href="#">API Friends List</a> | <a href="#">GitHub Repo</a></p>
+$('#submit').on('click', function() {
 
-        </div>
-    </footer>
+  var newFriend = {
+            name: $('#name').val().trim(),
+            pic: $('#photo').val().trim()
+        };
+  console.log(newFriend)
+
+    var q1= $("#q1").val();
+    var q2= $("#q2").val();
+    var q3= $("#q3").val();
+    var q4= $("#q4").val();
+    var q5= $("#q5").val();
+    var q6= $("#q6").val();
+    var q7= $("#q7").val();
+    var q8= $("#q8").val();
+    var q9= $("#q9").val();
+    var q10= $("#q10").val();
+    answers.push(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10);
+    console.log(answers);
+})
+</script>
+
 </body>
 
 </html>
