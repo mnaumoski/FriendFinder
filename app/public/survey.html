@@ -148,12 +148,6 @@
 
     $('#submit').on('click', function() {
 
-        var newFriend = {
-            name: $('#name').val().trim(),
-            pic: $('#photo').val().trim()
-        };
-        console.log(newFriend)
-
         var q1 = $("#q1").val();
         var q2 = $("#q2").val();
         var q3 = $("#q3").val();
@@ -166,6 +160,13 @@
         var q10 = $("#q10").val();
         answers.push(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10);
         console.log(answers);
+
+        var newFriend = {
+            name: $('#name').val().trim(),
+            pic: $('#photo').val().trim(),
+            answers: answers
+        };
+        console.log(newFriend)
     })
     </script>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
