@@ -1,32 +1,21 @@
-// ===============================================================
-// LOAD DATA
-// HERE we are linkinr routes to our data.
-// These data hold the information on friends.
-// ===============================================================
+// ===============================================
+// Include 'path' to ge the correct path for html
+// ===============================================
 
-var friends = require('../data/friends.js');
+var path = require('path');
 
-// ===============================================================
+// ===============================================
 // ROUTING
-// ===============================================================
 
-module.exports = function(app) {
-    // API GET Requests
-    // This code handles when users visit a page.
-    //In each of the cases when the user visits the link, they are shown a JSON.
+module.exports = function (app) {
+  // HTML GET requests
+  // When users visit a page - show HTML page of content
 
-    app.get('/api/friends', function(req, res) {
-      res.json(friends);
-    });
-    // API POST Requests
-    // Below code handles when a user submits the survey (JSON)
-    // this JSON is pushed to the appropriate JS array
-    //When the survey is submitted the data is sent to the server... and the server saves it to the friendsList Array
+  app.get('/survey.html', function(req, res){
+      res.sendFile(path.join(__dirname + '/../public/survey.html'))
+  });
 
-    app.post('/api/friends', function(req, res) {
-      friends.push(req.body);
-      // res.json(true);
-    });
-
-
-};
+  app.get('/', function(req, res){
+      res.sendFile(path.join(__dirname + '/../public/home.html'))
+  })
+}

@@ -18,6 +18,9 @@ module.exports = function(app) {
     app.get('/api/friends', function(req, res) {
         res.json(friends);
     });
+
+
+    // =============================================
     // API POST Requests
     // Below code handles when a user submits the survey (JSON)
     // this JSON is pushed to the appropriate JS array
