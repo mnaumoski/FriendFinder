@@ -15,7 +15,7 @@ module.exports = function(app) {
     // This code handles when users visit a page.
     //In each of the cases when the user visits the link, they are shown a JSON.
 
-    app.get('/api/friends', function(req, res) {
+    app.get('/api/friendsList', function(req, res) {
         res.json(friends);
     });
 
@@ -26,10 +26,10 @@ module.exports = function(app) {
     // this JSON is pushed to the appropriate JS array
     //When the survey is submitted the data is sent to the server... and the server saves it to the friendsList Array
 
-    app.post('/api/friends', function(req, res) {
+    app.post('/api/friend', function(req, res) {
         friends.push(req.body);
         // res.json(true);
     });
 
-
 };
+
