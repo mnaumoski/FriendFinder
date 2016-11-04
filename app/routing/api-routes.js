@@ -27,8 +27,9 @@ module.exports = function(app) {
     //When the survey is submitted the data is sent to the server... and the server saves it to the friendsList Array
 
     app.post('/api/friend', function(req, res) {
-        friends.push(req.body);
-        // res.json(true);
+        var newFriend = req.body;
+
+        
     });
 
 };
