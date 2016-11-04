@@ -29,7 +29,13 @@ module.exports = function(app) {
     app.post('/api/friend', function(req, res) {
         var newFriend = req.body;
 
-        
+        var sum = [];
+
+        for (var i=0; i<friends.length; i++){
+
+        }
+
+
     });
 
 };
