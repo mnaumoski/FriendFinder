@@ -27,16 +27,34 @@ module.exports = function(app) {
     //When the survey is submitted the data is sent to the server... and the server saves it to the friendsList Array
 
     app.post('/api/friend', function(req, res) {
-        var newFriend = req.body;
-
-        var sum = [];
-
-        for (var i=0; i<friends.length; i++){
-
+        
+        var closestMatch ={
+            name: "",
+            photo: '',
+            match_diff: 0
         }
 
+        var newFriendData = req.body;
+        var newFriendName = newFriendData.name;
+        var newFriendPhoto = newFriendData.photo;
+        var newFriendAnswers = newFriendData.answers;
+
+        console.log(newFriendName + newFriendAnswers);
+
+        var difference = 0;
+
+        for (var i = 0; i < friends.length; i++) {
+
+            for (var j = 0; j < fr; j++) {
+                // Math.abs()  -absolte value of x
+            difference += Math.abs(parseInt(newFriendData.answers[j]) - parseInt(friends[j]));
+
+            }
+            if (difference , closestMatch)
+        }
+        friends.push(req.body);
+        var 
 
     });
 
 };
-

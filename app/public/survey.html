@@ -133,72 +133,107 @@
             <option value="4">4</option>
             <option value="5">5 (Strongly Agree)</option>
         </select> -->
-    </div>
-    <br>
-    <div class="panel container">
-        <input class="btn btn-default btn-lg btn-block" type="submit" id="submit" value="Submit">
-        <br>
-    </div>
-    </form>
-    <div class="panel">
-        <footer class="footer">
-            <div class="container">
-                <!-- <p><a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a> | <a href="https://github.com/afhaque/HotRestaurant">GitHub Repo</a></p> -->
-                <p><a href="#">API Friends List</a> | <a href="https://github.com/mnaumoski">GitHub Repo</a></p>
+            <br>
+            <br>
+            <div class="panel container">
+                <input class="btn btn-default btn-lg btn-block" type="submit" id="submit" value="Submit">
+                <br>
             </div>
-        </footer>
-    </div>
-    <script>
-    $(document).ready(function() {
+        </form>
+        <!-- the modal -->
+        <div class="modal fade" id="resultsModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <!-- modal content -->
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: black; color: white">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="modalFriend">You have a match!</h4>
+                    </div>
+                    <!-- mbody -->
+                    <div class="modal-body">
+                        <h2 id="modalName"></h2>
+                        <img id="modalImage" src='' alt='image not found' style="max-width: 200px;">
+                    </div>
+                    <!-- mfooter -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+        <div class="panel">
+            <footer class="footer">
+                <div class="container">
+                    <p><a href="#">API Friends List</a> | <a href="https://github.com/mnaumoski">GitHub Repo</a></p>
+                </div>
+            </footer>
+        </div>
+        
+        <script>
+        $(document).ready(function() {
 
-        $('#submit').on('click', function() {
 
-            var isValid = true;
-            var validName = $('#name').val().trim();
-            var validPhoto = $('#photo').val().trim();
 
-            if (!validPhoto || !validPhoto) {
-                isValid = false;
-                alert("Please enter name and/or photo!")
-                console.log("no pic or name")
-            } else {
+            $('#submit').on('click', function() {
 
-                var newFriend = {
-                    name: validName,
-                    photo: validPhoto,
-                    answers: []
-                }
+                var isValid = true;
+                var validName = $('#name').val().trim();
+                var validPhoto = $('#photo').val().trim();
 
-                console.log("Without answers - Name: " + newFriend.name + " Photo URL: " + newFriend.photo);
+                if (!validPhoto || !validPhoto) {
+                    isValid = false;
+                    alert("Please enter name and/or photo!")
+                    console.log("no pic or name")
+                } else {
 
-                //array for post
-                for (var i = 0; i < 9; i++) {
+                    var newFriend = {
+                        name: validName,
+                        photo: validPhoto,
+                        answers: []
+                    }
 
-                    var ans = $('#q' + (i + 1)).val();
+                    console.log("Without answers - Name: " + newFriend.name + " Photo URL: " + newFriend.photo);
 
-                    newFriend.answers.push(ans)
+                    //array for post
+                    for (var i = 0; i < 9; i++) {
 
-                    console.log(newFriend);
+                        var ans = $('#q' + (i + 1)).val();
 
-                    alert("Thank you for submitting your survey!")
+                        newFriend.answers.push(ans)
 
-                    return false;
-                }
-            }// close if/then
+                        console.log(newFriend);
 
-            
+                        alert("Thank you for submitting your survey!")
 
-            var currentURL = window.location.origin;
 
-            $.post(currentURL + "/api/friend", newFriend, function(data){
-                console.log(data);
+                        return false;
 
-            })//close post
+                    }
 
-        });//close submit on click
-    });// close document ready
-    </script>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+                } // close if/then
+
+
+
+                var currentURL = window.location.origin;
+
+                $.post(currentURL + "/api/friend", newFriend, function(data) {
+                    console.log(data);
+                    // add data to modal
+                    $("#modalName").text(data.name);
+                    $('#modalImage').attr('src', data.photo);
+
+                    $("#resultsModal").modal('toggle');
+
+
+
+                }); //close post
+
+            }); //close submit on click
+        }); // close document ready
+        </script>
 </body>
 
 </html>
