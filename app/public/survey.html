@@ -136,11 +136,12 @@
             <br>
             <br>
             <div class="panel container">
-                <input class="btn btn-default btn-lg btn-block" type="submit" id="submit" value="Submit">
+                <input class="btn btn-default btn-lg btn-block" type="submit" id="submit" value="submit">
                 <br>
             </div>
         </form>
         <!-- the modal -->
+        <!-- ===================================================== -->
         <div class="modal fade" id="resultsModal" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <!-- modal content -->
@@ -152,7 +153,7 @@
                     <!-- mbody -->
                     <div class="modal-body">
                         <h2 id="modalName"></h2>
-                        <img id="modalImage" src='' alt='image not found' style="max-width: 200px;">
+                        <img id="modalImage" src='' alt='image not found' style="max-width: 200px;"/>
                     </div>
                     <!-- mfooter -->
                     <div class="modal-footer">
@@ -164,6 +165,8 @@
             <!-- /.modal-dialog -->
         </div>
         <!-- /.modal -->
+        <!-- ================================================= -->
+        <!-- footer -->
         <div class="panel">
             <footer class="footer">
                 <div class="container">
@@ -171,11 +174,8 @@
                 </div>
             </footer>
         </div>
-        
         <script>
         $(document).ready(function() {
-
-
 
             $('#submit').on('click', function() {
 
@@ -206,7 +206,7 @@
 
                         console.log(newFriend);
 
-                        alert("Thank you for submitting your survey!")
+                        alert("Welcome " + newFriend.name + "," + " thank you for submitting your survey!");
 
 
                         return false;
@@ -215,8 +215,6 @@
 
                 } // close if/then
 
-
-
                 var currentURL = window.location.origin;
 
                 $.post(currentURL + "/api/friend", newFriend, function(data) {
@@ -224,13 +222,8 @@
                     // add data to modal
                     $("#modalName").text(data.name);
                     $('#modalImage').attr('src', data.photo);
-
                     $("#resultsModal").modal('toggle');
-
-
-
                 }); //close post
-
             }); //close submit on click
         }); // close document ready
         </script>

@@ -27,7 +27,7 @@ module.exports = function(app) {
     //When the survey is submitted the data is sent to the server... and the server saves it to the friendsList Array
 
     app.post('/api/friend', function(req, res) {
-        
+
         var closestMatch ={
             name: "",
             photo: '',
@@ -39,22 +39,35 @@ module.exports = function(app) {
         var newFriendPhoto = newFriendData.photo;
         var newFriendAnswers = newFriendData.answers;
 
-        console.log(newFriendName + newFriendAnswers);
+        console.log(newFriendData);
+        console.log(newFriendName);
+        console.log(newFriendPhoto);
+        console.log(newFriendAnswers);
 
         var difference = 0;
 
         for (var i = 0; i < friends.length; i++) {
+            console.log(friends[i]);
 
-            for (var j = 0; j < fr; j++) {
+            for (var j = 0; j < friends.length[i].answers[j]; j++) {
                 // Math.abs()  -absolte value of x
-            difference += Math.abs(parseInt(newFriendData.answers[j]) - parseInt(friends[j]));
+            difference += Math.abs(parseInt(newFriendAnswers[j]) - parseInt(friends[i].answers[j]));
 
-            }
-            if (difference , closestMatch)
-        }
-        friends.push(req.body);
-        var 
+            //close j for loop
+
+            if (difference < closestMatch.match_diff){
+                closestMatch.name = friends[i].name;
+                closestMatch.photo = friends[i].photo;
+                closestMatch.match_diff = difference;
+            } //close if
+        }//close j for loop
+    }//close i loop
+
+        friends.push(newFriendData);
+        console.log(friends);
+        res.json(closestMatch)
 
     });
 
 };
+

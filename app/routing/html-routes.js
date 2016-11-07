@@ -11,20 +11,15 @@ module.exports = function (app) {
   // HTML GET requests
   // When users visit a page - show HTML page of content
 
-  app.get('/survey.html', function(req, res){
+  app.get('/survey', function(req, res){
+    console.log("User visits survey page.")
       res.sendFile(path.join(__dirname + '/../public/survey.html'))
   });
 
   app.get('/', function(req, res){
+      console.log("Welcome to the home page")
       res.sendFile(path.join(__dirname + '/../public/home.html'))
   });
-
-  // app.get('/friends', function(req, res){
-  //       res.sendFile(path.join(__dirname + '/../data/friends.js'));
-  //       // res.json()
-  // });
-
-  
 
   app.use(function(req, res){
     res.sendFile(path.join(__dirname + '/../public/home.html'))
