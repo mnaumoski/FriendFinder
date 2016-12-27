@@ -219,7 +219,7 @@
                 console.log("We should be able to see results from answers here: " + newFriend.name );
                 var currentURL = window.location.origin;
 
-                $.post(currentURL + "/api/friends", newFriend, function(data){
+                $.post(currentURL + "/api/friendsList", newFriend, function(data){
 console.log(newFriend);
                     // add data to modal
                     $("#modalName").text(data.name);
